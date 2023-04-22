@@ -45,7 +45,7 @@
 
     % デバッグ時のみ使用、用紙全面の方眼紙を出現させる
     $if(デバッグ)$
-        \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm); % for debug
+        % \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm); % for debug
     $endif$
 
     %------------------------------------------------------------
@@ -237,6 +237,77 @@
         \makebox(32.5mm,5.5mm)[c]{$連絡先.電話.備考$}
     };
     %------------------------------------------------------------
+
+    %------------------------------------------------------------
+    % 学歴・職歴
+    %
+    \draw [line width=0.5mm] (20mm,92mm) -- (169.5mm,92mm) -- (169.5mm,244mm) -- (20mm,244mm) -- cycle;
+    \draw [line width=0.1mm] (20mm,98mm) -- (169.5mm,98mm);
+    \draw [densely dashed] (37mm,92mm) -- (37mm,244mm);
+    \draw [line width=0.1mm] (45mm,92mm) -- (45mm,244mm);
+
+    \node [rectangle,text width=17mm] at (20mm,92mm) {
+        \makebox(17mm,6mm)[c]{
+            \scriptsize 年
+        }
+    };
+    
+    \node [rectangle,text width=8mm] at (37mm,92mm) {
+        \makebox(8mm,6mm)[c]{
+            \scriptsize 月
+        }
+    };
+    
+    \node [rectangle,text width=124.5mm] at (45mm,92mm) {
+        \makebox(124.5mm,6mm)[c]{
+            \scriptsize 学歴・職歴（各別にまとめて書く）
+        }
+    };
+
+    \foreach \x in {1,2,...,19}
+    {
+        \draw [line width=0.1mm] (20mm,98mm+7.68421mm*\x) -- (169.5mm,98mm+7.68421mm*\x);
+    }
+
+    \node [rectangle,text width=149.5mm] at (20mm,98mm) {
+        \makebox(149.5mm,7.68421mm)[c]{
+            学歴
+        }
+    };
+
+    \node [rectangle,text width=149.5mm] at (20mm,98mm+7.68421mm*12) {
+        \makebox(149.5mm,7.68421mm)[c]{
+            職歴
+        }
+    };
+
+    \newcounter{現在の学歴枠インデックス}
+    \setcounter{現在の学歴枠インデックス}{1}
+    $for(学歴)$
+        \ifnum \value{現在の学歴枠インデックス} > 11 \PackageError{}{学歴の項目数が多すぎます。最大で11個までしか入力できません。} \fi
+        \node [rectangle,text width=17mm] at (20mm,98mm+\value{現在の学歴枠インデックス}*7.68421mm) {
+            \makebox(17mm,7.68421mm)[c]{
+                $it.年$
+            }
+        };
+        \node [rectangle,text width=8mm] at (37mm,98mm+\value{現在の学歴枠インデックス}*7.68421mm) {
+            \makebox(8mm,7.68421mm)[c]{
+                $it.月$
+            }
+        };
+        \node [rectangle,text width=124.5mm] at (45mm,98mm+\value{現在の学歴枠インデックス}*7.68421mm) {
+            \makebox(124.5mm,7.68421mm)[s]{
+                \begin{tcolorbox}[
+                    fit width from=0mm to 124.5mm-2mm,
+                    fit height from=0mm to 7.68421mm,
+                    valign=center
+                ]
+                        $it.内容$
+                \end{tcolorbox}
+            }
+        };
+        \stepcounter{現在の学歴枠インデックス}
+    $endfor$
 
 \end{tikzpicture}
 \end{document}

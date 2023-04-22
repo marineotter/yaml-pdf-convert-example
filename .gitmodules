@@ -1,0 +1,3 @@
+[submodule "docker-pandoc-eisvogel-ja"]
+	path = docker-pandoc-eisvogel-ja
+	url = https://github.com/marineotter/docker-pandoc-eisvogel-ja.git

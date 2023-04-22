@@ -1,0 +1,4 @@
+pdf-engine: lualatex
+variables:
+  lang: ja
+  luatexjapresetoptions: haranoaji

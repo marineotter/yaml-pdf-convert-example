@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  pdf-builder:
+    build: ./docker-pandoc-eisvogel-ja
+    volumes:
+      - ./src:/work
+    working_dir: /work
+    command: [
+      "/usr/local/bin/pandoc",
+      "--pdf-engine",
+      "lualatex",
+      "-V",
+      "lang=ja",
+      "-V",
+      "luatexjapresetoptions=ipaex",
+      "-f",
+      "markdown+raw_tex",
+      "data.yml",
+      "--template=template.tex",
+      "-o",
+      "result.pdf"
+      ]
+    entrypoint: []

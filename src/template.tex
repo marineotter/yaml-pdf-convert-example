@@ -1,0 +1,218 @@
+\documentclass[b5j]{ltjsarticle}
+\usepackage{tikz}
+\usepackage[fitting]{tcolorbox}
+
+\usetikzlibrary{intersections,calc,arrows.meta}
+\tcbuselibrary{skins}
+
+\topmargin      = -1in
+\oddsidemargin  = -1in
+\evensidemargin = -1in
+\headheight     = 0mm
+\headsep        = 0mm
+\parindent      = 0mm
+\textwidth      = 183mm
+\textheight     = 258mm
+\unitlength     = 1mm
+
+\begin{document}
+
+\tcbset{
+    empty,
+    sharp corners,
+    boxsep=0mm,
+    top=0mm,
+    bottom=0mm,
+    left=0mm,
+    right=0mm,
+    fit algorithm=hybrid*
+}
+
+\begin{tikzpicture}[
+    x=0mm,y=0mm,
+    xscale=1,yscale=-1,
+    overlay,
+    every node/.style={inner sep=0,outer sep=0,below right}
+    % every node/.style={inner sep=0,outer sep=0,fill=cyan!20,below right} % for debug
+]
+    % \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm);
+    
+    \draw [densely dashed] (123.5mm,12.5mm) -- (153.5mm,12.5mm) -- (153.5mm,52.5mm) -- (123.5mm,52.5mm) -- cycle;
+
+    \node [rectangle,text width=30mm] at (123.5mm,30mm) {
+        \makebox(30mm,5mm)[c]{\scriptsize 写真をはる位置}
+    };
+    \node [rectangle,text width=30mm] at (123.5mm,35mm) {
+        \makebox(30mm,5mm)[c]{\scriptsize （縦 40mm, 横 30mm））}
+    };
+
+    \node [rectangle,text width=25mm] at (20mm,18mm) {
+        \makebox(25mm,5mm)[s]{\Large \bf 履歴書}
+    };
+    \node [rectangle,text width=25mm,below left] at (118mm,20mm) {
+        \makebox(25mm,3mm)[]{\scriptsize $現在日付$ 現在}
+    };
+    \draw [line width=0.5mm] (20mm,24mm) -- (118mm,24mm) -- (118mm,55.5mm) -- (169.5mm,55.5mm) -- (169.5mm,91mm) -- (20mm,91mm) -- cycle;
+
+    \node [rectangle,text width=13mm] at (20mm,24mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}ふりがな}
+    };
+
+    \node [rectangle,text width=26mm] at (40mm,24mm) {
+        \makebox(25mm,5mm)[c]{\scriptsize $氏名.ふりがな.姓$}
+    };
+
+    \node [rectangle,text width=26mm] at (70mm,24mm) {
+        \makebox(25mm,5mm)[c]{\scriptsize $氏名.ふりがな.名$}
+    };
+
+    \draw [densely dashed] (20mm,29mm) -- (118mm,29mm);
+
+    \node [rectangle,text width=13mm] at (20mm,29mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}氏名}
+    };
+
+    \node [rectangle,text width=26mm] at (40mm,29mm) {
+        \makebox(25mm,14.5mm)[c]{\Large $氏名.漢字.姓$}
+    };
+
+    \node [rectangle,text width=26mm] at (70mm,29mm) {
+        \makebox(25mm,14.5mm)[c]{\Large $氏名.漢字.名$}
+    };
+
+    \draw [line width=0.1mm] (20mm,43.5mm) -- (118mm,43.5mm);
+
+    \node [rectangle,text width=85.5mm] at (20mm,43.5mm) {
+        \makebox(85mm.5,12mm)[c]{\normalsize $生年月日$ 生 \hspace{4mm} (満 $満年齢$ 歳)}
+    };
+
+    \draw [line width=0.1mm] (105.5mm,43.5mm) -- (105.5mm,55.5mm);
+
+    \node [rectangle,text width=7mm] at (105.5mm,43.5mm) {
+        \makebox(6mm,5mm)[s]{\scriptsize \hspace{2mm}性別}
+    };
+
+    \node [rectangle,text width=8mm] at (107.75mm,47.5mm) {
+        \makebox(8mm,8mm)[c]{\normalsize $性別$}
+    };
+
+    \draw [line width=0.1mm] (20mm,55.5mm) -- (118mm,55.5mm);
+
+    \node [rectangle,text width=13mm] at (20mm,55.5mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}ふりがな}
+    };
+
+    \node [rectangle,text width=101.5mm] at (35mm,55.5mm) {
+        \makebox(101mm.5,5mm)[s]{
+            \begin{tcolorbox}[
+                fit width from=0mm to 101.5mm-2mm,
+                fit height from=0mm to 5mm,
+                valign=center
+            ]
+                \scriptsize $現住所.ふりがな$
+            \end{tcolorbox}
+        }
+    };
+
+    \draw [densely dashed] (20mm,60.5mm) -- (137mm,60.5mm);
+
+    \node [rectangle,text width=13mm] at (20mm,60.5mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}現住所}
+    };
+
+    \node [rectangle,text width=30mm] at (35mm,60.5mm) {
+        \makebox(28mm,5mm)[s]{\scriptsize \hspace{2mm}〒\hspace{1mm}$現住所.郵便番号$}
+    };
+
+    \node [rectangle,text width=117mm] at (20mm,65.5mm) {
+        \makebox(117mm,7.5mm)[s]{
+            \begin{tcolorbox}[
+                fit width from=0mm to 117mm-2mm,
+                fit height from=0mm to 7.5mm,
+                valign=center
+            ]
+                $現住所.漢字$
+            \end{tcolorbox}
+        }
+    };
+
+    \draw [line width=0.1mm] (20mm,73mm) -- (169.5mm,73mm);
+
+    \node [rectangle,text width=13mm] at (20mm,73mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}ふりがな}
+    };
+
+    \node [rectangle,text width=101.5mm] at (35mm,73mm) {
+        \makebox(101mm.5,5mm)[s]{
+            \begin{tcolorbox}[
+                fit width from=0mm to 101.5mm-2mm,
+                fit height from=0mm to 5mm,
+                valign=center
+            ]
+                \scriptsize $連絡先.ふりがな$
+            \end{tcolorbox}
+        }
+    };
+
+    \draw [densely dashed] (20mm,78mm) -- (137mm,78mm);
+
+    \node [rectangle,text width=13mm] at (20mm,78mm) {
+        \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}連絡先}
+    };
+
+    \node [rectangle,text width=30mm] at (35mm,78mm) {
+        \makebox(28mm,5mm)[s]{\scriptsize \hspace{2mm}〒\hspace{1mm}$連絡先.郵便番号$}
+    };
+
+    \node [rectangle,text width=117mm] at (20mm,83mm) {
+        \makebox(117mm,7.5mm)[s]{
+            \begin{tcolorbox}[
+                fit width from=0mm to 117mm-2mm,
+                fit height from=0mm to 7.5mm,
+                valign=center
+            ]
+                $連絡先.漢字$
+            \end{tcolorbox}
+        }
+    };
+
+    \draw [line width=0.1mm] (137mm,55.5mm) -- (137mm,91mm);
+
+    \node [rectangle,text width=12mm] at (137mm,55.5mm) {
+        \makebox(10mm,3.5mm)[s]{\scriptsize \hspace{2mm}電話}
+    };
+    \node [rectangle,text width=12mm] at (137mm,59mm) {
+        \makebox(10mm,3.5mm)[s]{\scriptsize \hspace{2mm}市外局番}
+    };
+    \node [rectangle,text width=16mm] at (151mm,57.5mm) {
+        \makebox(15mm,5mm)[c]{$現住所.電話.市外局番$}
+    };
+    \draw [densely dashed] (137mm,62.5mm) -- (169.5mm,62.5mm);
+    \node [rectangle,text width=32.5mm] at (137mm,62.5mm) {
+        \makebox(32.5mm,5mm)[c]{$現住所.電話.番号$}
+    };
+    \draw [densely dashed] (137mm,67.5mm) -- (169.5mm,67.5mm);
+    \node [rectangle,text width=32.5mm] at (137mm,67.5mm) {
+        \makebox(32.5mm,5.5mm)[c]{$現住所.電話.備考$}
+    };
+
+    \node [rectangle,text width=12mm] at (137mm,73mm) {
+        \makebox(10mm,3.5mm)[s]{\scriptsize \hspace{2mm}電話}
+    };
+    \node [rectangle,text width=12mm] at (137mm,76.5mm) {
+        \makebox(10mm,3.5mm)[s]{\scriptsize \hspace{2mm}市外局番}
+    };
+    \node [rectangle,text width=16mm] at (151mm,75mm) {
+        \makebox(15mm,5mm)[c]{$連絡先.電話.市外局番$}
+    };
+    \draw [densely dashed] (137mm,80mm) -- (169.5mm,80mm);
+    \node [rectangle,text width=32.5mm] at (137mm,80mm) {
+        \makebox(32.5mm,5mm)[c]{$連絡先.電話.番号$}
+    };
+    \draw [densely dashed] (137mm,85mm) -- (169.5mm,85mm);
+    \node [rectangle,text width=32.5mm] at (137mm,85mm) {
+        \makebox(32.5mm,5.5mm)[c]{$連絡先.電話.備考$}
+    };
+
+\end{tikzpicture}
+\end{document}

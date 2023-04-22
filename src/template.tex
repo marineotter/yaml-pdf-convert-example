@@ -27,17 +27,30 @@
 }
 
 \tikzset{
-    every node/.style={inner sep=0,outer sep=0,below right}
-    % every node/.style={inner sep=0,outer sep=0,fill=cyan!20,below right} % for debug
+    $if(デバッグ)$
+        every node/.style={inner sep=0,outer sep=0,fill=cyan!20,below right} % for debug
+    $else$
+        every node/.style={inner sep=0,outer sep=0,below right}
+    $endif$
 }
 
 \begin{document}
 
 \begin{tikzpicture}[xscale=1,yscale=-1]
+    %------------------------------------------------------------
+    % 用紙最外周を囲うダミー枠線を配置しておく
+    %
     \draw [opacity=.0] (0mm,0mm) -- (182mm,0mm) -- (182mm,257mm) -- (0mm,257mm) -- cycle;
+    %------------------------------------------------------------
 
-    % \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm); % for debug
-    
+    % デバッグ時のみ使用、用紙全面の方眼紙を出現させる
+    $if(デバッグ)$
+        \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm); % for debug
+    $endif$
+
+    %------------------------------------------------------------
+    % 写真貼り付け枠
+    %
     \draw [densely dashed] (123.5mm,12.5mm) -- (153.5mm,12.5mm) -- (153.5mm,52.5mm) -- (123.5mm,52.5mm) -- cycle;
 
     \node [rectangle,text width=30mm] at (123.5mm,30mm) {
@@ -46,14 +59,23 @@
     \node [rectangle,text width=30mm] at (123.5mm,35mm) {
         \makebox(30mm,5mm)[c]{\scriptsize （縦 40mm, 横 30mm））}
     };
+    %------------------------------------------------------------
 
+    %------------------------------------------------------------
+    % 「履歴書」「現在日付」部分の出力
+    %
     \node [rectangle,text width=25mm] at (20mm,18mm) {
         \makebox(25mm,5mm)[s]{\Large \bf 履歴書}
     };
     \node [rectangle,text width=25mm,below left] at (118mm,20mm) {
         \makebox(25mm,3mm)[]{\scriptsize $現在日付$ 現在}
     };
-    \draw [line width=0.5mm] (20mm,24mm) -- (118mm,24mm) -- (118mm,55.5mm) -- (169.5mm,55.5mm) -- (169.5mm,91mm) -- (20mm,91mm) -- cycle;
+    %------------------------------------------------------------
+
+    %------------------------------------------------------------
+    % 氏名や年齢、住所部分の出力
+    %
+    \draw [line width=0.5mm] (20mm,24mm) -- (118mm,24mm) -- (118mm,55.5mm) -- (169.5mm,55.5mm) -- (169.5mm,90.5mm) -- (20mm,90.5mm) -- cycle;
 
     \node [rectangle,text width=13mm] at (20mm,24mm) {
         \makebox(12mm,5mm)[s]{\scriptsize \hspace{2mm}ふりがな}
@@ -177,7 +199,7 @@
         }
     };
 
-    \draw [line width=0.1mm] (137mm,55.5mm) -- (137mm,91mm);
+    \draw [line width=0.1mm] (137mm,55.5mm) -- (137mm,90.5mm);
 
     \node [rectangle,text width=12mm] at (137mm,55.5mm) {
         \makebox(10mm,3.5mm)[s]{\scriptsize \hspace{2mm}電話}
@@ -214,6 +236,7 @@
     \node [rectangle,text width=32.5mm] at (137mm,85mm) {
         \makebox(32.5mm,5.5mm)[c]{$連絡先.電話.備考$}
     };
+    %------------------------------------------------------------
 
 \end{tikzpicture}
 \end{document}

@@ -34,9 +34,9 @@
 \begin{document}
 
 \begin{tikzpicture}[xscale=1,yscale=-1]
-    \coordinate(O) at (0mm,0mm);
+    \draw [white, thick] (0mm,0mm) -- (182mm,0mm) -- (182mm,257mm) -- (0mm,257mm) -- cycle;
 
-    \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm);
+    % \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm); % for debug
     
     \draw [densely dashed] (123.5mm,12.5mm) -- (153.5mm,12.5mm) -- (153.5mm,52.5mm) -- (123.5mm,52.5mm) -- cycle;
 

@@ -15,8 +15,6 @@
 \textheight     = 258mm
 \unitlength     = 1mm
 
-\begin{document}
-
 \tcbset{
     empty,
     sharp corners,
@@ -28,14 +26,17 @@
     fit algorithm=hybrid*
 }
 
-\begin{tikzpicture}[
-    x=0mm,y=0mm,
-    xscale=1,yscale=-1,
-    overlay,
+\tikzset{
     every node/.style={inner sep=0,outer sep=0,below right}
     % every node/.style={inner sep=0,outer sep=0,fill=cyan!20,below right} % for debug
-]
-    % \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm);
+}
+
+\begin{document}
+
+\begin{tikzpicture}[xscale=1,yscale=-1]
+    \coordinate(O) at (0mm,0mm);
+
+    \draw [help lines, step=5mm] (0mm,0mm) grid (182mm,257mm);
     
     \draw [densely dashed] (123.5mm,12.5mm) -- (153.5mm,12.5mm) -- (153.5mm,52.5mm) -- (123.5mm,52.5mm) -- cycle;
 
